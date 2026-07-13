@@ -1,0 +1,98 @@
+% Database Entity Relationship Diagram
+% Add to your graduation_report.tex in the appropriate section
+% Required package in preamble: \usepackage{tikz}
+% \usetikzlibrary{shapes.multipart, positioning, arrows.meta, fit, calc}
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[
+  entity/.style={rectangle, draw, minimum width=2.5cm, minimum height=1cm, fill=blue!10, font=\small\bfseries},
+  attribute/.style={ellipse, draw, minimum width=1.5cm, font=\tiny},
+  relationship/.style={diamond, draw, aspect=2, minimum width=2cm, fill=yellow!20, font=\tiny},
+  arrow/.style={-Stealth, thick},
+  label/.style={font=\tiny, midway, fill=white}
+]
+
+% Core Entities - Top Row
+\node[entity] (owner) at (0,8) {LabOwner};
+\node[entity] (staff) at (4,8) {Staff};
+\node[entity] (doctor) at (8,8) {Doctor};
+\node[entity] (patient) at (12,8) {Patient};
+
+% Middle Row - Order Flow
+\node[entity] (order) at (6,5) {Order};
+\node[entity] (orderdetails) at (2,5) {OrderDetails};
+\node[entity] (invoice) at (10,5) {Invoice};
+
+% Bottom Row - Tests and Results
+\node[entity] (test) at (0,2) {Test};
+\node[entity] (device) at (4,2) {Device};
+\node[entity] (result) at (8,2) {Result};
+\node[entity] (resultcomp) at (12,2) {ResultComponent};
+
+% Additional Entities
+\node[entity] (testcomp) at (2,0) {TestComponent};
+\node[entity] (notification) at (8,0) {Notification};
+\node[entity] (audit) at (12,0) {AuditLog};
+
+% Relationships - Owner
+\draw[arrow] (owner) -- node[label] {owns} (staff);
+\draw[arrow] (owner) -- node[label] {owns} (test);
+\draw[arrow] (owner) to[out=-45, in=135] node[label, above] {creates} (order);
+\draw[arrow] (owner) -- node[label, left] {manages} (invoice);
+\draw[arrow] (owner) to[out=-90, in=90] node[label, right] {monitors} (audit);
+
+% Relationships - Staff
+\draw[arrow] (staff) -- node[label] {creates} (patient);
+\draw[arrow] (staff) to[out=-90, in=90] node[label, right] {records} (result);
+\draw[arrow] (staff) -- node[label] {processes} (invoice);
+\draw[arrow] (staff) -- node[label] {operates} (device);
+\draw[arrow] (staff) to[out=-135, in=45] node[label, below] {logs} (audit);
+
+% Relationships - Doctor
+% Doctors cannot order tests from the system
+
+% Relationships - Patient
+\draw[arrow] (patient) -- node[label] {places} (order);
+\draw[arrow] (patient) -- node[label, above] {billed} (invoice);
+
+% Relationships - Order
+\draw[arrow] (order) -- node[label] {has} (orderdetails);
+\draw[arrow] (order) -- node[label] {generates} (invoice);
+\draw[arrow] (order) to[out=-90, in=90] node[label, left] {sent to} (notification);
+
+% Relationships - OrderDetails
+\draw[arrow] (orderdetails) -- node[label, left] {references} (test);
+\draw[arrow] (orderdetails) -- node[label] {assigns} (device);
+\draw[arrow] (orderdetails) to[out=-45, in=135] node[label, above] {produces} (result);
+
+% Relationships - Test
+\draw[arrow] (test) -- node[label, below] {uses} (device);
+\draw[arrow] (test) to[out=0, in=180] node[label, below] {has} (testcomp);
+
+% Relationships - Result
+\draw[arrow] (result) -- node[label] {contains} (resultcomp);
+\draw[arrow] (resultcomp) to[out=-90, in=0] node[label, right] {links} (testcomp);
+
+% Cardinality Labels
+\node[font=\tiny] at ($(owner)!0.3!(staff)$) [above] {1};
+\node[font=\tiny] at ($(owner)!0.7!(staff)$) [above] {N};
+
+\node[font=\tiny] at ($(patient)!0.3!(order)$) [right] {1};
+\node[font=\tiny] at ($(patient)!0.7!(order)$) [below] {N};
+
+\node[font=\tiny] at ($(order)!0.3!(orderdetails)$) [above] {1};
+\node[font=\tiny] at ($(order)!0.7!(orderdetails)$) [above] {N};
+
+\node[font=\tiny] at ($(orderdetails)!0.3!(result)$) [left] {1};
+\node[font=\tiny] at ($(orderdetails)!0.7!(result)$) [right] {1};
+
+\node[font=\tiny] at ($(result)!0.3!(resultcomp)$) [above] {1};
+\node[font=\tiny] at ($(result)!0.7!(resultcomp)$) [above] {N};
+
+\end{tikzpicture}
+}
+\caption{Database Entity Relationship Diagram showing key entities and their relationships}
+\label{fig:erd}
+\end{figure}

@@ -1,0 +1,16 @@
+{
+  "files.exclude": {
+    "ios/**": true,
+    "android/**": true,
+    "linux/**": true,
+    "macos/**": true,
+    "windows/**": true
+  },
+  "search.exclude": {
+    "ios/**": true,
+    "android/**": true,
+    "linux/**": true,
+    "macos/**": true,
+    "windows/**": true
+  }
+}

@@ -1,0 +1,12 @@
+# pack-refs with: peeled fully-peeled sorted 
+f61ddb9267becf19b97f863e43128a4ed25bcca7 refs/heads/Abdalrahman
+1856ce7f5892537bb9fc9b49f00b45d91c25b0c2 refs/heads/Motaz
+b2392fe96d9733dbdb807c2146b17a7ab6fee632 refs/heads/main
+565b5fe8d62b8b732fa203e0abfbb74f6906eec4 refs/original/refs/heads/Abdalrahman
+1856ce7f5892537bb9fc9b49f00b45d91c25b0c2 refs/original/refs/heads/Motaz
+b2392fe96d9733dbdb807c2146b17a7ab6fee632 refs/original/refs/heads/main
+23f16c056ce66c53effd6ef7a09c7cac3ff322ea refs/original/refs/remotes/origin/Abdalrahman
+845f05e24e733377bbe1c54c958bada15a96ee5f refs/original/refs/remotes/origin/Motaz
+b2392fe96d9733dbdb807c2146b17a7ab6fee632 refs/original/refs/remotes/origin/main
+b1b03906602b49d148e1f5e8a12ebcf926eebf35 refs/original/refs/stash
+bb2d0ca72aed6c15ee28e6334662a2c99abc7b39 refs/stash

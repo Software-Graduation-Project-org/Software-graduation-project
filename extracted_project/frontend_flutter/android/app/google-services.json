@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "617565931421",
+    "project_id": "medical-lab-6a8d4",
+    "storage_bucket": "medical-lab-6a8d4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617565931421:android:b0d486e0ad078eb1d25174",
+        "android_client_info": {
+          "package_name": "com.example.frontend_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAWITb--SYYBTqXfZPeb8Maa7xH2eHuNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
